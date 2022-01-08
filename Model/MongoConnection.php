@@ -6,6 +6,9 @@
 
     use MongoDB\Client;
 
+    /**
+     * Function connect to database
+     */
     class MongoConnection 
     {
         static $db = null;
