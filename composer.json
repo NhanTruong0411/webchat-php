@@ -1,0 +1,11 @@
+{
+    "autoload": {
+        "psr-4": {
+            "MyApp\\": "src"
+        }
+    },
+    "require": {
+        "mongodb/mongodb": "^1.11",
+        "cboden/ratchet": "v0.4"
+    }
+}
