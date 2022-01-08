@@ -32,7 +32,7 @@
                 <ul class="list-unstyled">
 
                   <li class="media p-2">
-                    <img class="mr-3 avatar online" src="img/1.jpeg" alt="Generic placeholder image">
+                    <img class="mr-3 avatar online" src="public/img/1.jpeg" alt="Generic placeholder image">
                     <div class="media-body">
                       <h6 class="mt-0 mb-1 name-contact">Yan <span>12/7/18 8:58 AM</span></h6>
                       <p>Cras sit amet, in gravida</p>
@@ -40,21 +40,21 @@
                     </div>
                   </li>
                   <li class="media contact-active p-2">
-                    <img class="mr-3 avatar online" src="img/2.jpg" alt="Generic placeholder image">
+                    <img class="mr-3 avatar online" src="public/img/2.jpg" alt="Generic placeholder image">
                     <div class="media-body">
                       <h6 class="mt-0 mb-1 name-contact">Linda <span>12/7/18 8:58 AM</span></h6>
                       <p>Cras sit amet nibh libero, in gravida</p>
                     </div>
                   </li>
                   <li class="media p-2">
-                    <img class="mr-3 avatar offline" src="img/3.png" alt="Generic placeholder image">
+                    <img class="mr-3 avatar offline" src="public/img/3.png" alt="Generic placeholder image">
                     <div class="media-body">
                       <h6 class="mt-0 mb-1 name-contact ">Jamal <span>12/7/18 8:58 AM</span></h6>
                       <p>Cras sit amet nibh libero, in gravida</p>
                     </div>
                   </li>
                   <li class="media p-2">
-                    <img class="mr-3 avatar online" src="img/4.jpeg" alt="Generic placeholder image">
+                    <img class="mr-3 avatar online" src="public/img/4.jpeg" alt="Generic placeholder image">
                     <div class="media-body">
                       <h6 class="mt-0 mb-1 name-contact">Cristian <span>12/7/18 8:58 AM</span></h6>
                       <p>Sit amet nibh libero, in gravida</p>
@@ -62,21 +62,21 @@
                     </div>
                   </li>
                   <li class="media p-2 ">
-                    <img class="mr-3 avatar online" src="img/5.jpeg" alt="Generic placeholder image">
+                    <img class="mr-3 avatar online" src="public/img/5.jpeg" alt="Generic placeholder image">
                     <div class="media-body">
                       <h6 class="mt-0 mb-1 name-contact">Jack <span>12/7/18 8:58 AM</span></h6>
                       <p>Cras sit amet nibh libero, in gravida</p>
                     </div>
                   </li>
                   <li class="media p-2">
-                    <img class="mr-3 avatar offline" src="img/6.jpeg" alt="Generic placeholder image">
+                    <img class="mr-3 avatar offline" src="public/img/6.jpeg" alt="Generic placeholder image">
                     <div class="media-body">
                       <h6 class="mt-0 mb-1 name-contact">Angelica <span>12/7/18 8:58 AM</span></h6>
                       <p>Cras sit amet, in gravida</p>
                     </div>
                   </li>
                   <li class="media p-2">
-                    <img class="mr-3 avatar offline" src="img/7.jpeg" alt="Generic placeholder image">
+                    <img class="mr-3 avatar offline" src="public/img/7.jpeg" alt="Generic placeholder image">
                     <div class="media-body">
                       <h6 class="mt-0 mb-1 name-contact">Marcia <span>12/7/18 8:58 AM</span></h6>
                       <p>Cras sit amet nibh libero,</p>
@@ -138,7 +138,7 @@
                       <span class="me-date">sent on: 9/27/18 10:52 AM</span>
                     </li>
                     <li>
-                      <img class="mr-3 avatar other-img" src="img/2.jpg" alt="Generic placeholder image">
+                      <img class="mr-3 avatar other-img" src="public/img/2.jpg" alt="Generic placeholder image">
                       <div class="alert alert-primary other">
                         hey there
                       </div>
@@ -151,21 +151,21 @@
                       <span class="me-date">sent on: 9/27/18 10:52 AM</span>
                     </li>
                     <li>
-                      <img class="mr-3 avatar other-img" src="img/2.jpg" alt="Generic placeholder image">
+                      <img class="mr-3 avatar other-img" src="public/img/2.jpg" alt="Generic placeholder image">
                       <div class="alert alert-primary other">
                         way!!!
                       </div>
                       <span class="other-date">sent on: 9/27/18 10:52 AM</span>
                     </li>
                     <li>
-                      <img class="mr-3 avatar other-img" src="img/2.jpg" alt="Generic placeholder image">
+                      <img class="mr-3 avatar other-img" src="public/img/2.jpg" alt="Generic placeholder image">
                       <div class="alert alert-primary other">
                         Great is on this Quidem adipisci, aperiam eaque quia
                       </div>
                       <span class="other-date">sent on: 9/27/18 10:52 AM</span>
                     </li>
                     <li>
-                      <img class="mr-3 avatar other-img" src="img/2.jpg" alt="Generic placeholder image">
+                      <img class="mr-3 avatar other-img" src="public/img/2.jpg" alt="Generic placeholder image">
                       <div class="alert alert-primary other">
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                       </div>
@@ -196,7 +196,7 @@
                       <span class="me-date">sent on: 9/27/18 10:52 AM</span>
                     </li>
                     <li>
-                      <img class="mr-3 avatar other-img" src="img/2.jpg" alt="Generic placeholder image">
+                      <img class="mr-3 avatar other-img" src="public/img/2.jpg" alt="Generic placeholder image">
                       <div class="alert alert-primary other">
                         Lorem ipsum dolor sit ?
                       </div>
