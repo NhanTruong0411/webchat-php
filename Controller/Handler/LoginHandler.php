@@ -16,8 +16,14 @@
 
         if(!empty($result)) 
         {
+            $update_user = array(
+                'login_status' => true
+            );
+            $user->update($result['_id'], $update_user);
+
             $current_user = array(
                 'user_id' => $result['_id'],
+                'avatar' => $result['avatar'],
                 'username' => $result['username']
             );
             $_SESSION['user'] = $current_user;
