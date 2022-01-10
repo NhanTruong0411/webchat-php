@@ -8,7 +8,7 @@
       <div class="row justify-content-center">
          <div class="col-md-6 col-lg-4">
             <div class="login-wrap py-5">
-               <div class="img d-flex align-items-center justify-content-center" style="background-image: url(public/css/login/images/bg.png); width: 250px; height: 200px"></div>
+               <div class="img d-flex align-items-center justify-content-center" style="background-image: url(./public/css/login/images/bg.png); width: 250px; height: 200px"></div>
                <h3 class="text-center mb-0">Welcome</h3>
                <p class="text-center">Sign up by entering the information below</p>
                <form action="index.php?route=UserController&action=handle_register" class="login-form" method="POST">

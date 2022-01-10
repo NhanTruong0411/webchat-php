@@ -10,5 +10,3 @@
             include 'View/chatbox.php';
             break;
     }
-
-?>
