@@ -17,7 +17,7 @@
         if(!empty($result)) 
         {
             $update_user = array(
-                'login_status' => true
+                'login_status' => true,
             );
             $user->update($result['_id'], $update_user);
 
@@ -27,11 +27,11 @@
                 'username' => $result['username']
             );
             $_SESSION['user'] = $current_user;
-            echo "<meta http-equiv='refresh' content='0; url=index.php?route=ChatController&action=view_chatbox' />";
+            echo "<meta http-equiv='refresh' content='0; url=index.php?ctrl=ChatController&action=view_chatbox' />";
         } 
         else 
         {
-            echo "<meta http-equiv='refresh' content='0; url=index.php?route=UserController&action=view_login' />";
+            echo "<meta http-equiv='refresh' content='0; url=index.php?ctrl=UserController&action=view_login' />";
             echo "<script>alert('User not found!! \n Please check your email and password!!')</script>";
         }
     }

@@ -11,7 +11,7 @@
 					<div class="img d-flex align-items-center justify-content-center" style="background-image: url(./public/css/login/images/bg.png); width: 250px; height: 200px"></div>
 					<h3 class="text-center mb-0">Welcome</h3>
 					<p class="text-center">Sign in by entering the information below</p>
-					<form action="index.php?route=UserController&action=handle_login" class="login-form" method="POST">
+					<form action="index.php?ctrl=UserController&action=handle_login" class="login-form" method="POST">
 						<div class="form-group">
 							<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span>
 							</div>
@@ -33,7 +33,7 @@
 					</form>
 					<div class="w-100 text-center mt-4 text">
 						<p class="mb-0">Don't have an account?</p>
-						<a href="index.php?route=UserController&action=view_register">Sign Up</a>
+						<a href="index.php?ctrl=UserController&action=view_register">Sign Up</a>
 					</div>
 				</div>
 			</div>

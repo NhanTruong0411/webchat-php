@@ -41,6 +41,7 @@ $user = $_SESSION['user'];
                 <div class="user_info">
                   <span>Khalid</span>
                   <p>Kalid is online</p>
+
                 </div>
               </div>
             </li>
