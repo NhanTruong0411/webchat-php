@@ -29,8 +29,8 @@ session_start();
 
   $ctrl = "UserController";
 
-  if (isset($_GET['route'])) {
-    $ctrl = $_GET['route'];
+  if (isset($_GET['ctrl'])) {
+    $ctrl = $_GET['ctrl'];
   }
 
   include 'Controller/' . $ctrl . '.php';
