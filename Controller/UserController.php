@@ -6,6 +6,7 @@
         $action = $_GET['action'];
 
     function remove_sign($str) {
+        //remove special character
         return preg_replace('/[^A-Za-z0-9\-]/', '', $str);
     }
 
@@ -23,7 +24,11 @@
             include 'Controller/Handler/RegisterHandler.php';
             break;
         case 'logout':
-
+            $user = new User();
+            $user_update = array('login_status' => false);
+            $user->update($_SESSION['user']['user_id'], $user_update);
+            session_destroy();
+            echo "<meta http-equiv='refresh' content='0; url=index.php?route=UserController&action=view_login' />";
             break;
     }
 
