@@ -17,7 +17,6 @@
          */
         public function getUser(string $type = '',array $input = []) 
         {
-
             //if register -> found the acount has
             //the same email in database
             try {
@@ -36,13 +35,13 @@
             try {
                 if($type === 'login')
                 {
-                    $filter = array(
-                        'email' => $input['email'],
-                        'password' => $input['password']
-                    );
-                    $result = $this->Users_Collection->findOne($filter);
-                    
-                    return $result;
+                    $result = $this->Users_Collection->findOne(['email' => $input['email']]);
+
+                    if($result['password'] === $input['password']) {
+                        return $result;
+                    } else {
+                        return false;
+                    }
                 }
             } catch (\MongoDB\Exception $e) {
                 echo "Exception:", $e->getMessage(), "\n";
@@ -65,7 +64,7 @@
                     'login_status' => false,
                     'create_at' => new MongoDB\BSON\UTCDateTime(),
                     'update_at' => new MongoDB\BSON\UTCDateTime(),
-                    'avatar' => $this->generateAvatar($input['username'][0])
+                    'avatar' => $this->generateAvatar(strtoupper($input['username'][0]))
                 );
                 $this->Users_Collection->insertOne($register_user);
                 return true;

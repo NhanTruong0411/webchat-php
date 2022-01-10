@@ -14,7 +14,7 @@
                 <h3><?php echo $user['username'] ?></h3>
                 <div>
                     <a class="btn btn-info mt-2 mb-2 text-white">Edit</a>
-                    <a href="index.php?route=UserController&action=logout" class="btn btn-danger mt-2 mb-2 text-white">Logout</a>
+                    <a href="index.php?ctrl=UserController&action=logout" class="btn btn-danger mt-2 mb-2 text-white">Logout</a>
                 </div>
             </div>
         </div>

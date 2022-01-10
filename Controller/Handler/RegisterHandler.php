@@ -19,11 +19,11 @@
         if(empty($result)) 
         {
             $user->register($user_register_input);
-            echo "<meta http-equiv='refresh' content='0; url=index.php?route=UserController&action=view_login' />";
+            echo "<meta http-equiv='refresh' content='0; url=index.php?ctrl=UserController&action=view_login' />";
         } 
         else 
         {
-            echo "<meta http-equiv='refresh' content='0; url=index.php?route=UserController&action=view_register' />";
+            echo "<meta http-equiv='refresh' content='0; url=index.php?ctrl=UserController&action=view_register' />";
             echo "<script>alert('User already exist!!')</script>";
         }
     }
