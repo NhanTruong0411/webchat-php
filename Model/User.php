@@ -24,7 +24,6 @@ class User
         try {
             if ($type === 'register') {
                 $result = $this->Users_Collection->findOne(['email' => $input['email']]);
-
                 return $result;
             }
         } catch (\MongoDB\Exception $e) {
@@ -40,7 +39,16 @@ class User
                     'password' => $input['password']
                 );
                 $result = $this->Users_Collection->findOne($filter);
+                return $result;
+            }
+        } catch (\MongoDB\Exception $e) {
+            echo "Exception:", $e->getMessage(), "\n";
+        }
 
+        // if edit_pass -> return the password of this user for compair purpose
+        try {
+            if ($type === 'edit_pass') {
+                $result = $this->Users_Collection->findOne(['_id' => $_SESSION['user']['user_id']]);
                 return $result;
             }
         } catch (\MongoDB\Exception $e) {

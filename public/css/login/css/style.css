@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -302,6 +303,12 @@ template {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
+  color: #d54d7b; font-family: "Great Vibes", cursive; 
+  font-size: 165px; 
+  font-weight: normal;
+  margin-bottom: 0px; 
+  margin-top: 40px; text-align: center;
+  text-shadow: 0 1px 1px #fff;
   margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2; }
@@ -8172,8 +8179,7 @@ h1, h2, h3, h4, h5,
   padding-bottom: 0; }
 
 .heading-section {
-  font-size: 28px;
-  color: #000; }
+  color: #d54d7b; font-family: "Great Vibes", cursive; font-size: 165px; line-height: 160px; font-weight: normal; margin-bottom: 0px; margin-top: 40px; text-align: center; text-shadow: 0 1px 1px #fff; }
 
 .img {
   background-size: cover;
