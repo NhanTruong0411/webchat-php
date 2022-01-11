@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
    // variables
-   $target_dir = "images/".$_SESSION['user_id']."/";
+   $target_dir = "images/";
    $target_file = $target_dir . basename($_FILES["avatar_name"]["name"]);
    $uploadOk = 1;
    $file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -67,9 +67,4 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
          echo "<meta http-equiv='refresh' content='0; url=index.php?ctrl=UserController&action=view_profile' />";
       }
    }
-
-
-
-
-
 }

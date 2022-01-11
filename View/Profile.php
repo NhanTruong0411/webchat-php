@@ -15,7 +15,7 @@ $user = $_SESSION['user'];
    <div class="container text-center profile_avatar">
       <div class="row justify-content-center">
          <div class="mt-3 mb-3 text-center">
-            <img src="<?php echo $user['avatar'] ?>" alt="" width="150" style="height:150px" class="img-fluid rounded-circle img-thumbnail" />
+            <img src="<?php echo $user['avatar'] ?>" alt="user image" style="width: 150px; height: 150px; " class="img-fluid rounded-circle img-thumbnail" />
             <div class="custom-file my-3">
                <input type="file" class="custom-file-input" id="customFile" name="avatar_name">
                <label class="custom-file-label" for="customFile">Change avatar</label>

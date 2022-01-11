@@ -20,6 +20,7 @@ session_start();
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
   <link rel="stylesheet" href="public/css/chatbox/style.css">
   <link rel="stylesheet" href="public/css/login/css/style.css">
+  <link rel="stylesheet" href="public/css/myCss/style.css">
   <title>WebChat</title>
 </head>
 

@@ -1,6 +1,4 @@
 <?php
-
-
 // File upload path
 // Allow certain file formats
 $allowTypes = array('jpg', 'png', 'jpeg', 'gif', 'pdf');
@@ -21,5 +19,3 @@ if (in_array($file_type, $allowTypes)) {
 } else {
    $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
 }
-
-?>
