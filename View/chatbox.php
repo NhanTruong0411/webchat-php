@@ -7,10 +7,10 @@ $user = $_SESSION['user'];
   <div class="container">
     <div class="row justify-content-center">
       <div class="mt-3 mb-3 text-center">
-        <img src="<?php echo $user['avatar'] ?>" alt="" width="150" class="img-fluid rounded-circle img-thumbnail" />
+        <img src="<?php echo $user['avatar'] ?>" alt="" width="150" style="height: 150px;" class="img-fluid rounded-circle img-thumbnail img-fluid" />
         <h3><?php echo $user['username'] ?></h3>
         <div>
-          <a class="btn btn-info mt-2 mb-2 text-white">Edit</a>
+          <a href="index.php?ctrl=UserController&action=view_profile" class="btn btn-info mt-2 mb-2 text-white">Profile</a>
           <a href="index.php?ctrl=UserController&action=logout" class="btn btn-danger mt-2 mb-2 text-white">Logout</a>
         </div>
       </div>
