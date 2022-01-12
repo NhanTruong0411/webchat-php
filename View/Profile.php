@@ -14,8 +14,11 @@ $user = $_SESSION['user'];
    <!-- avatar -->
    <div class="container text-center profile_avatar">
       <div class="row justify-content-center">
-         <div class="mt-3 mb-3 text-center">
+         <div class="mt-3 mb-3 text-center col-lg-5 col-md-6">
             <img src="<?php echo $user['avatar'] ?>" alt="user image" style="width: 150px; height: 150px; " class="img-fluid rounded-circle img-thumbnail" />
+            <div>
+               <h2>Hello, <?php echo $user['username']; ?></h2>
+            </div>
             <div class="custom-file my-3">
                <input type="file" class="custom-file-input" id="customFile" name="avatar_name">
                <label class="custom-file-label" for="customFile">Change avatar</label>
@@ -33,7 +36,7 @@ $user = $_SESSION['user'];
             <div class="form-group row">
                <label for="staticEmail" class="col-sm-3 col-form-label text-right mt-2">Username</label>
                <div class="col-sm-8">
-                  <input type="text" class="form-control" style="color: #000 !important;" name="username" value="<?php echo $user['username']; ?>">
+                  <input type="text" class="form-control" style="color: #000 !important;" name="username">
                </div>
             </div>
             <!-- old password -->

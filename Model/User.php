@@ -48,7 +48,7 @@ class User
         // if edit_pass -> return the password of this user for compair purpose
         try {
             if ($type === 'edit_pass') {
-                $result = $this->Users_Collection->findOne(['_id' => $_SESSION['user']['user_id']]);
+                $result = $this->Users_Collection->findOne(['_id' => $input['user_id']]);
                 return $result;
             }
         } catch (\MongoDB\Exception $e) {
