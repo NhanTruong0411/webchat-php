@@ -7,6 +7,6 @@ if (isset($_GET['action']))
 
 switch ($action) {
     case 'view_chatbox':
-        include 'View/chatbox.php';
+        include 'View/chatbox2.php';
         break;
 }
