@@ -5,7 +5,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
    $user = new User();
 
-   $result = $user->getUser('edit_pass', $_SESSION['user']);
+   // get all the user record
+   $result = $user->getUserById($user_session['user_id']);
 
    $update = [];
 

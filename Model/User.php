@@ -2,11 +2,13 @@
 class User
 {
     public $Users_Collection;
+    private $date;
 
     public function __construct()
     {
         //connect to db and get the Users collection
         $this->Users_Collection = MongoConnection::connect()->users;
+        $this->date = new DateTime('now', new DateTimeZone('Asia/Ho_Chi_Minh'));
     }
 
     /**
@@ -45,15 +47,17 @@ class User
             echo "Exception:", $e->getMessage(), "\n";
         }
 
-        // if edit_pass -> return the password of this user for compair purpose
-        try {
-            if ($type === 'edit_pass') {
-                $result = $this->Users_Collection->findOne(['_id' => $input['user_id']]);
-                return $result;
-            }
-        } catch (\MongoDB\Exception $e) {
-            echo "Exception:", $e->getMessage(), "\n";
-        }
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param string $id
+     * @return void
+     */
+    public function getUserById(string $id) {
+        $result = $this->Users_Collection->findOne(['_id' => $this->mongo_id($id)]);
+        return $result;
     }
 
     /**
@@ -70,8 +74,8 @@ class User
                 'username' => $input['username'],
                 'password' => $input['password'],
                 'login_status' => false,
-                'create_at' => new MongoDB\BSON\UTCDateTime(),
-                'update_at' => new MongoDB\BSON\UTCDateTime(),
+                'create_at' => $this->date->format('d-m-Y h:i:s'),
+                'update_at' => $this->date->format('d-m-Y h:i:s'),
                 'avatar' => $this->generateAvatar(strtoupper($input['username'][0]))
             );
             $this->Users_Collection->insertOne($register_user);
@@ -98,6 +102,23 @@ class User
         );
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param [type] $user_detail
+     * @return void
+     */
+    public function tranformUserDetail($user_detail) {
+
+        $new_user_detail = array(
+            'user_id' => $user_detail['_id'],
+            'username' => $user_detail['username'],
+            'avatar' => $user_detail['avatar']
+        );
+
+        return $new_user_detail;
+    }
+
     private function generateAvatar($character)
     {
         $path = "images/" . time() . ".png";
@@ -116,4 +137,9 @@ class User
         imagedestroy($image);
         return $path;
     }
+
+    private function mongo_id(string $id) {
+        return new MongoDB\BSON\ObjectId($id);
+    }
+
 }

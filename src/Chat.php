@@ -1,8 +1,14 @@
 <?php
 
 namespace MyApp;
+
+use DateTime;
+use DateTimeZone;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
+
+require dirname(__DIR__).'/Model/MongoConnection.php';
+require dirname(__DIR__).'/Model/User.php';
 
 class Chat implements MessageComponentInterface {
     protected $clients;
@@ -23,11 +29,28 @@ class Chat implements MessageComponentInterface {
         echo sprintf('Connection %d sending message "%s" to %d other connection%s' . "\n"
             , $from->resourceId, $msg, $numRecv, $numRecv == 1 ? '' : 's');
 
+        $data = json_decode($msg);
+
+        $user = new \User;
+        $temp = $user->getUserById($data->user_id);
+        $user_detail = $user->tranformUserDetail($temp);
+
+        $date = new DateTime('now', new DateTimeZone('Asia/Ho_Chi_Minh'));
+        $data->sent_time = $date->format('d-m-Y h:i:s');
+
         foreach ($this->clients as $client) {
-            if ($from !== $client) {
-                // The sender is not the receiver, send to each client connected
-                $client->send($msg);
+            // if ($from !== $client) {
+            //     // The sender is not the receiver, send to each client connected
+            //     $client->send($msg);
+            // }
+
+            if($from == $client) {
+                $data->from = 'Me';
+            } else {
+                $data->from = $user_detail['username'];
             }
+
+            $client->send(json_encode($data));
         }
     }
 
