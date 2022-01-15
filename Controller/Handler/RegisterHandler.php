@@ -13,7 +13,6 @@
             'password' => $hashed_password
         );
 
-        $user = new User();
         $result = $user->getUser('register', $user_register_input);
         
         if(empty($result)) 

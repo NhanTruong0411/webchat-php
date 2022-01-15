@@ -1,6 +1,14 @@
-<?php
-$user = $_SESSION['user'];
+<?php 
+
+   $user = $_SESSION['user'];
+   var_dump($user);
+
+   $all_messages = $room->getAllMessage();
+
+   $all_users = $chat_users->getAllUser();
+
 ?>
+
 <div class="container">
    <br />
    <h3 class="text-center">PHP Chat Application</h3>
@@ -22,6 +30,37 @@ $user = $_SESSION['user'];
             </div>
 
             <div class="card-body" id="messages_area">
+               <?php
+                  foreach($all_messages as $message) 
+                  {
+                     if($message['user_id'] === $user['user_id'])
+                     {
+                        $from = 'Me';
+                        $row_class = 'row justify-content-start';
+                        $background_class = 'text-dark alert-light';
+                     }
+                     else 
+                     {
+                        $from = $message['username'];
+                        $row_class = 'row justify-content-end';
+                        $background_class = 'alert-success';
+                     }
+
+                     echo '
+                        <div class="'.$row_class.'">
+                           <div class="col-sm-10">
+                              <div class="shadow-sm alert '.$background_class.'">
+                                 <b>'.$from.'</b> '. $message['message'] . '
+                                 </br>
+                                 <div class="text-right">
+                                    <small>'.$message['create_at'].'</small>
+                                 </div>
+                              <div>
+                           </div>
+                        </div>
+                     ';
+                  }
+               ?>
             </div>
             
             <form method="post" id="chat_form" data-parsley-errors-container="#validation_error">
@@ -48,6 +87,39 @@ $user = $_SESSION['user'];
                <a href="index.php?ctrl=UserController&action=logout" class="btn btn-danger mt-2 mb-2 text-white">Logout</a>
             </div>
          </div>
+
+         <div class="card mt-3">
+            <div class="card-header">User List</div>
+            <div class="card-body" id="user_list">
+               <div class="list-group list-group-flush">
+                  <?php
+                  if(count($all_users) > 0)
+                  {
+                     foreach($all_users as $k => $u)
+                     {
+                        $status = 'offline';
+                        if($u['login_status']) 
+                        {
+                           $status = 'online';
+                        }
+
+                        if($u['_id'] != $user['user_id'])
+                        {
+                           echo '
+                              <a class="list-group-item list-group-item-action">
+                                 <img src="'.$u['avatar'].'" class="img-fluid rounded-circle img-thumbnail" width="50" />
+                                 <span class="ml-1"><strong>'.$u['username'].'</strong></span>
+                                 <span class="mt-2 float-right">'.$status.'</span>
+                              </a>
+                           ';
+                        }
+                     }
+                  }
+                  ?>
+               </div>
+            </div>
+         </div>
+
       </div>
    </div>
 </div>
@@ -104,6 +176,8 @@ $user = $_SESSION['user'];
       //initialize parsley validation library
       $('#chat_form').parsley();
 
+      // $('#messages_area').scrollTop($('#messages_area')[0].scrollHeight);
+
       //chat form submit
       $('#chat_form').on('submit', function(e) {
 
@@ -121,7 +195,9 @@ $user = $_SESSION['user'];
                message
             }
 
-            conn.send(JSON.stringify(data))
+            conn.send(JSON.stringify(data));
+
+            // $('#messages_area').scrollTop($('#messages_area')[0].scrollHeight);
 
          }
 
