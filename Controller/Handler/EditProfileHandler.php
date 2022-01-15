@@ -3,8 +3,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
    $user_session = $_SESSION['user'];
 
-   $user = new User();
-
    // get all the user record
    $result = $user->getUserById($user_session['user_id']);
 

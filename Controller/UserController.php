@@ -10,6 +10,8 @@
         return preg_replace('/[^A-Za-z0-9\-]/', '', $str);
     }
 
+   $user = new User();
+
     switch($action) {
         case 'view_login':
             include 'View/login.php';

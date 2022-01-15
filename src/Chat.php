@@ -9,6 +9,7 @@ use Ratchet\ConnectionInterface;
 
 require dirname(__DIR__).'/Model/MongoConnection.php';
 require dirname(__DIR__).'/Model/User.php';
+require dirname(__DIR__).'/Model/Room.php';
 
 class Chat implements MessageComponentInterface {
     protected $clients;
@@ -32,11 +33,23 @@ class Chat implements MessageComponentInterface {
         $data = json_decode($msg);
 
         $user = new \User;
+
+        $room = new \Room;
+
         $temp = $user->getUserById($data->user_id);
-        $user_detail = $user->tranformUserDetail($temp);
+        $user_detail = $user->tranformUserDetail('chat-detail',$temp);
 
         $date = new DateTime('now', new DateTimeZone('Asia/Ho_Chi_Minh'));
         $data->sent_time = $date->format('d-m-Y h:i:s');
+
+        $saved_message = array(
+            'user_id' => $data->user_id,
+            'username' => $user_detail['username'],
+            'message' => $data->message,
+            'create_at' => $date->format('d-m-Y h:i:s'),
+        );
+
+        $room->saveMessage($saved_message);
 
         foreach ($this->clients as $client) {
             // if ($from !== $client) {

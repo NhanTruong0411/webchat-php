@@ -1,6 +1,7 @@
 <?php
-include 'Model/MongoConnection.php';
-include 'Model/User.php';
+require_once('Model/MongoConnection.php');
+require_once('Model/User.php');
+require_once('Model/Room.php');
 session_start();
 ?>
 

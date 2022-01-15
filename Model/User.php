@@ -1,7 +1,7 @@
 <?php
 class User
 {
-    public $Users_Collection;
+    private $Users_Collection;
     private $date;
 
     public function __construct()
@@ -97,9 +97,21 @@ class User
     {
         // var_dump($set);
         $this->Users_Collection->findOneAndUpdate(
-            ['_id' =>  new MongoDB\BSON\ObjectId($user_id)],
+            ['_id' =>  $this->mongo_id($user_id)],
             ['$set' => $set]
         );
+    }
+
+    public function getAllUser()
+    {
+        $users = $this->Users_Collection->find()->toArray();
+
+        $transformed_users = [];
+        foreach($users as $user) 
+        {
+            $transformed_users[] = $this->tranformUserDetail('without-password', $user);
+        }
+        return $transformed_users;
     }
 
     /**
@@ -108,15 +120,24 @@ class User
      * @param [type] $user_detail
      * @return void
      */
-    public function tranformUserDetail($user_detail) {
+    public function tranformUserDetail(string $type, $user_detail) {
 
-        $new_user_detail = array(
-            'user_id' => $user_detail['_id'],
-            'username' => $user_detail['username'],
-            'avatar' => $user_detail['avatar']
-        );
+        if($type == 'chat-detail') 
+        {
+            $new_user_detail = array(
+                'user_id' => $user_detail['_id'],
+                'username' => $user_detail['username'],
+                'avatar' => $user_detail['avatar']
+            );
+    
+            return $new_user_detail;
+        }
 
-        return $new_user_detail;
+        if($type == 'without-password') 
+        {
+            unset($user_detail['password']);
+            return $user_detail;
+        }
     }
 
     private function generateAvatar($character)
