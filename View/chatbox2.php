@@ -1,7 +1,6 @@
 <?php 
 
    $user = $_SESSION['user'];
-   var_dump($user);
 
    $all_messages = $room->getAllMessage();
 
@@ -97,10 +96,10 @@
                   {
                      foreach($all_users as $k => $u)
                      {
-                        $status = 'offline';
+                        $status = '<i class="fa fa-circle text-danger"></i>';
                         if($u['login_status']) 
                         {
-                           $status = 'online';
+                           $status = '<i class="fa fa-circle text-success"></i>';
                         }
 
                         if($u['_id'] != $user['user_id'])

@@ -23,30 +23,22 @@ class User
 
         //if register -> found the acount has
         //the same email in database
-        try {
-            if ($type === 'register') {
-                $result = $this->Users_Collection->findOne(['email' => $input['email']]);
-                return $result;
-            }
-        } catch (\MongoDB\Exception $e) {
-            echo "Exception:", $e->getMessage(), "\n";
+        if ($type === 'register') {
+            $result = $this->Users_Collection->findOne(['email' => $input['email']]);
+            return $result;
         }
+
 
         //if login -> found the account has the same email and password
         //that user has given
-        try {
-            if ($type === 'login') {
-                $filter = array(
-                    'email' => $input['email'],
-                    'password' => $input['password']
-                );
-                $result = $this->Users_Collection->findOne($filter);
-                return $result;
-            }
-        } catch (\MongoDB\Exception $e) {
-            echo "Exception:", $e->getMessage(), "\n";
+        if ($type === 'login') {
+            $filter = array(
+                'email' => $input['email'],
+                'password' => $input['password']
+            );
+            $result = $this->Users_Collection->findOne($filter);
+            return $result;
         }
-
     }
 
     /**
@@ -68,22 +60,17 @@ class User
      */
     public function register(array $input = [])
     {
-        try {
-            $register_user = array(
-                'email' =>  $input['email'],
-                'username' => $input['username'],
-                'password' => $input['password'],
-                'login_status' => false,
-                'create_at' => $this->date->format('d-m-Y h:i:s'),
-                'update_at' => $this->date->format('d-m-Y h:i:s'),
-                'avatar' => $this->generateAvatar(strtoupper($input['username'][0]))
-            );
-            $this->Users_Collection->insertOne($register_user);
-            return true;
-            // echo "Inserted with Object ID '{$result->getInsertedId()}'";
-        } catch (\MongoDB\Exception $e) {
-            echo "Exception:", $e->getMessage(), "\n";
-        }
+        $register_user = array(
+            'email' =>  $input['email'],
+            'username' => $input['username'],
+            'password' => $input['password'],
+            'login_status' => false,
+            'create_at' => $this->date->format('d-m-Y h:i:s'),
+            'update_at' => $this->date->format('d-m-Y h:i:s'),
+            'avatar' => $this->generateAvatar(strtoupper($input['username'][0]))
+        );
+        $this->Users_Collection->insertOne($register_user);
+        return true;
     }
 
     /**
@@ -127,7 +114,8 @@ class User
             $new_user_detail = array(
                 'user_id' => $user_detail['_id'],
                 'username' => $user_detail['username'],
-                'avatar' => $user_detail['avatar']
+                'avatar' => $user_detail['avatar'],
+                'connection_id' => $user_detail['connection_id']
             );
     
             return $new_user_detail;

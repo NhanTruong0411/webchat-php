@@ -29,7 +29,7 @@
             include 'Controller/Handler/LogoutHandle.php';
             break;
         case 'view_profile':
-            include 'View/Profile.php';
+            include 'View/profile.php';
             break;
         case 'handle_edit_profile':
             include 'Controller/Handler/EditProfileHandler.php';
