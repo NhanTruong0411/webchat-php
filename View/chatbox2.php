@@ -32,7 +32,7 @@
                <?php
                   foreach($all_messages as $message) 
                   {
-                     if($message['user_id'] === $user['user_id'])
+                     if(strcmp($message['user_id'], $user['user_id']))
                      {
                         $from = 'Me';
                         $row_class = 'row justify-content-start';
