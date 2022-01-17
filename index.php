@@ -2,6 +2,7 @@
 require_once('Model/MongoConnection.php');
 require_once('Model/User.php');
 require_once('Model/Room.php');
+require_once('Model/PrivateChat.php');
 session_start();
 ?>
 
