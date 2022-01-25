@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+
+/* Yellow: #F9AA33 */
+
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   font-family: 'Lora', serif;
+   font-weight: 500;
+}
+
+body {
+   background: #F9AA33;
+   color: white;
+}
+
+.btn-yellow {
+   background-color: #F9AA33 !important;
+   color: #000;
+}
+
+.login-wrap {
+   border-radius: 15px;
+}
+
+a {
+   color: #F9AA33 !important;
+}
+
+h1 { 
+   color: #F9AA33;
+   font-family: "Great Vibes", cursive;
+   font-size: 165px;
+   line-height: 160px;
+   font-weight: normal;
+   margin-bottom: 0px;
+   margin-top: 40px;
+   text-align: center;
+   text-shadow: 0 1px 1px #fff; 
+}
+
+
+
+
