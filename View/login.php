@@ -38,7 +38,7 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<button type="submit" class="btn form-control btn-yellow rounded submit px-3 mt-4">Get Started</button>
+							<button type="submit" class="btn form-control btn-yellow rounded submit px-3 mt-4 text-dark">Get Started</button>
 						</div>
 					</form>
 					<div class="w-100 text-center mt-4 text">
