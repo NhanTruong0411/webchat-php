@@ -221,7 +221,7 @@ $all_users = $chat_users->getAllUser();
 			$('#is_active_chat').val('Yes');
 
 			$.ajax({
-				url: "index.php?ctrl=ChatController&action=view_private_chat&request_name='fetch_chat'",
+				url: "index.php?ctrl=ChatController&action=view_private_chat&request_name=fetch_chat",
 				method: "POST",
 				data: {
 					request_name: 'fetch_chat',
