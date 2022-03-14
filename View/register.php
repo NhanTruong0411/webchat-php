@@ -8,7 +8,7 @@
                   <h3 class="text-center mb-0">Welcome</h3>
                   <p class="text-center mb-0">Sign up by entering the information below</p>
                </div>
-               <form action="index.php?ctrl=UserController&action=handle_login" class="login-form" method="POST">
+               <form action="index.php?ctrl=UserController&action=handle_register" class="login-form" method="POST">
                   <!-- Email -->
                   <div class="form-group">
                      <div class="row">

@@ -130,7 +130,7 @@ class User
 
     private function generateAvatar($character)
     {
-        $path = "images/" . time() . ".png";
+        $path = "images/avatar_" . time() . ".png";
         $image = imagecreate(200, 200);
         $red = rand(0, 255);
         $green = rand(0, 255);
