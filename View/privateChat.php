@@ -7,94 +7,90 @@ $all_users = $chat_users->getAllUser();
 
 <div class="container-fluid">
 
-		<div class="row">
+	<div class="row">
 
-			<div class="col-lg-3 col-md-4 col-sm-5" style="background-color: #f1f1f1; height: 100vh; border-right:1px solid #ccc;">
+		<div class="col-lg-3 col-md-4 col-sm-5" style="background-color: #f1f1f1; height: 100vh; border-right:1px solid #ccc;">
 
-				<input type="hidden" name="login_user_id" id="login_user_id" value="<?php echo $user['user_id'] ?>" />
+			<input type="hidden" name="login_user_id" id="login_user_id" value="<?php echo $user['user_id'] ?>" />
 
-				<input type="hidden" name="is_active_chat" id="is_active_chat" value="No" />
+			<input type="hidden" name="is_active_chat" id="is_active_chat" value="No" />
 
-				<div class="mt-3 mb-3 text-center">
-					<img src="<?php echo $user['avatar']; ?>" class="img-fluid rounded-circle img-thumbnail" width="150" />
-					<h3 class="mt-2"><?php echo $user['username'] ?></h3>
-					<a href="index.php?ctrl=UserController&action=view_profile" class="btn btn-info mt-2 mb-2 text-white">Profile</a>
-                    <a href="index.php?ctrl=UserController&action=logout" class="btn btn-danger mt-2 mb-2 text-white">Logout</a>
-				</div>
-
-				<div class="list-group" style=" max-height: 100vh; margin-bottom: 10px; overflow-y:scroll; -webkit-overflow-scrolling: touch;">
-                    <?php
-                    if(count($all_users) > 0)
-                    {
-                        foreach($all_users as $k => $u)
-                        {
-                            $status = '<i class="fa fa-circle text-danger"></i>';
-                            if($u['login_status']) 
-                            {
-                            $status = '<i class="fa fa-circle text-success"></i>';
-                            }
-
-                            if($u['_id'] != $user['user_id'])
-                            {
-                            echo "
-                                <a class='list-group-item list-group-item-action select_user ' style='cursor:pointer' data-user_id = '" . $u['_id'] . "'>
-                                 			<img src='". $u["avatar"] . "' class='img-fluid rounded-circle img-thumbnail' width='50' />
-                                 			<span class='ml-1'>
-                                				<strong>
-                                 					<span id='list_user_name_" . $u["_id"] . "'>" . $u['username'] . "</span>
-                                 					<span id='friend_id" .$u['_id'] . "' value='".$u['_id']."'>1</span>
-                                				</strong>
-                                 			</span>
-                                 			<span class='mt-2 float-right' id='users_status" . $u['_id'] . "'>" . $status . "</span>
-                                 		</a>
-                                ";
-                            }
-                        }
-                    }
-                    ?>
-					<?php
-					// $user_object = new user;
-					// $user_object->setUserId($_SESSION['user']['id']);
-					// $user_friend_data = $user_object->getAllUserWithStatusCount();
-					// foreach ($user_friend_data as $user_friend) {
-					// 	$icon = '<i class="fa fa-circle text-danger"></i>';
-					// 	if ($user_friend['login_status'] == 'login') {
-					// 		$icon = '<i class="fa fa-circle text-success"></i>';
-					// 	}
-					// 	if ($_SESSION['user']['id'] != $user_friend['id']) {
-					// 		if ($user_friend['count_status'] > 0) {
-					// 			$total_unread_message = '<span id="unread" class="badge badge-danger badge-pill">' . $user_friend['count_status'] . '</span>';
-							
-					// 		} else {
-							
-					// 			$total_unread_message = '';
-					// 		}
-					// 		echo "
-					// 		<a class='list-group-item list-group-item-action select_user ' style='cursor:pointer' data-friend_user_id = '" . $user_friend['id'] . "'>
-					// 			<img src='content/images/" . $user_friend["profile"] . "' class='img-fluid rounded-circle img-thumbnail' width='50' />
-					// 			<span class='ml-1'>
-					// 				<strong>
-					// 					<span id='list_user_name_" . $user_friend["id"] . "'>" . $user_friend['name'] . "</span>
-					// 					<span id='friend_id" .$user_friend['id'] . "' value='".$user_friend['id']."'>" . $total_unread_message . "</span>
-					// 				</strong>
-					// 			</span>
-					// 			<span class='mt-2 float-right' id='users_status" . $user_friend['id'] . "'>" . $icon . "</span>
-					// 		</a>
-					// 		";
-					// 	}
-					// }
-					?>
-				</div>
+			<div class="mt-3 mb-3 text-center">
+				<img src="<?php echo $user['avatar']; ?>" class="img-fluid rounded-circle img-thumbnail" width="150" />
+				<h3 class="mt-2"><?php echo $user['username'] ?></h3>
+				<a href="index.php?ctrl=UserController&action=view_profile" class="btn btn-info mt-2 mb-2 text-white">Profile</a>
+				<a href="index.php?ctrl=UserController&action=logout" class="btn btn-danger mt-2 mb-2 text-white">Logout</a>
 			</div>
 
-			<div class="col-lg-9 col-md-8 col-sm-7">
-				<h3 class="text-center">Chat</h3>
-				<hr />
-				<br />
-				<div id="chat_area"></div>
-			</div>
+			<div class="list-group" style=" max-height: 100vh; margin-bottom: 10px; overflow-y:scroll; -webkit-overflow-scrolling: touch;">
+				<?php
+				if (count($all_users) > 0) {
+					foreach ($all_users as $k => $u) {
+						$status = '<i class="fa fa-circle text-danger"></i>';
+						if ($u['login_status']) {
+							$status = '<i class="fa fa-circle text-success"></i>';
+						}
 
+						if ($u['_id'] != $user['user_id']) {
+							echo "
+								<a class='list-group-item list-group-item-action select_user ' style='cursor:pointer' data-user_id = '" . $u['_id'] . "'>
+											<img src='" . $u["avatar"] . "' class='img-fluid rounded-circle img-thumbnail' width='50' />
+											<span class='ml-1'>
+											<strong>
+													<span id='list_user_name_" . $u["_id"] . "'>" . $u['username'] . "</span>
+													<span id='friend_id" . $u['_id'] . "' value='" . $u['_id'] . "'>1</span>
+											</strong>
+											</span>
+											<span class='mt-2 float-right' id='users_status" . $u['_id'] . "'>" . $status . "</span>
+										</a>
+								";
+						}
+					}
+				}
+				?>
+				<?php
+				// $user_object = new user;
+				// $user_object->setUserId($_SESSION['user']['id']);
+				// $user_friend_data = $user_object->getAllUserWithStatusCount();
+				// foreach ($user_friend_data as $user_friend) {
+				// 	$icon = '<i class="fa fa-circle text-danger"></i>';
+				// 	if ($user_friend['login_status'] == 'login') {
+				// 		$icon = '<i class="fa fa-circle text-success"></i>';
+				// 	}
+				// 	if ($_SESSION['user']['id'] != $user_friend['id']) {
+				// 		if ($user_friend['count_status'] > 0) {
+				// 			$total_unread_message = '<span id="unread" class="badge badge-danger badge-pill">' . $user_friend['count_status'] . '</span>';
+
+				// 		} else {
+
+				// 			$total_unread_message = '';
+				// 		}
+				// 		echo "
+				// 		<a class='list-group-item list-group-item-action select_user ' style='cursor:pointer' data-friend_user_id = '" . $user_friend['id'] . "'>
+				// 			<img src='content/images/" . $user_friend["profile"] . "' class='img-fluid rounded-circle img-thumbnail' width='50' />
+				// 			<span class='ml-1'>
+				// 				<strong>
+				// 					<span id='list_user_name_" . $user_friend["id"] . "'>" . $user_friend['name'] . "</span>
+				// 					<span id='friend_id" .$user_friend['id'] . "' value='".$user_friend['id']."'>" . $total_unread_message . "</span>
+				// 				</strong>
+				// 			</span>
+				// 			<span class='mt-2 float-right' id='users_status" . $user_friend['id'] . "'>" . $icon . "</span>
+				// 		</a>
+				// 		";
+				// 	}
+				// }
+				?>
+			</div>
 		</div>
+
+		<div class="col-lg-9 col-md-8 col-sm-7">
+			<h3 class="text-center">Chat</h3>
+			<hr />
+			<br />
+			<div id="chat_area"></div>
+		</div>
+
+	</div>
 </div>
 
 <script type="text/javascript">
@@ -102,7 +98,7 @@ $all_users = $chat_users->getAllUser();
 
 		var from_user_id = $('#login_user_id').val();
 
-        var receiver_user_id = '';
+		var receiver_user_id = '';
 
 		var conn = new WebSocket('ws://localhost:8080?token=<?php echo $token; ?>&user_id=<?php echo $user['user_id']; ?>');
 		conn.onopen = function(e) {
@@ -115,7 +111,7 @@ $all_users = $chat_users->getAllUser();
 
 			data = JSON.parse(data);
 			console.log(data);
-			
+
 			var row_class = "";
 			var background_class = "";
 			if (data.from == 'Me') {
@@ -140,36 +136,36 @@ $all_users = $chat_users->getAllUser();
 							</div>
 						</div>
 						`;
-	
+
 					$('#messages_area').append(html_data);
-	
+
 					$('#messages_area').scrollTop($('#messages_area')[0].scrollHeight);
-	
+
 					$('#chat_message').val("");
 
 				}
-			
-				
+
+
 			}
-			 
-			if($('#chat_user_name')!=data.from){
-			var count_chat = $('#unread').text();
-			if (count_chat == '') {
-				count_chat = 0;
+
+			if ($('#chat_user_name') != data.from) {
+				var count_chat = $('#unread').text();
+				if (count_chat == '') {
+					count_chat = 0;
+				}
+				count_chat = parseInt(count_chat);
+				count_chat = count_chat + 1;
+
+				$('#unread').text(count_chat);
+				$('#unread').show();
 			}
-			count_chat = parseInt(count_chat);
-			count_chat = count_chat + 1;
-			
-			$('#unread').text(count_chat);
-			$('#unread').show();
-			}
-			
+
 		}
 
-        conn.onclose = function(event) {
-            console.log("Connection close!");
-        }
-	
+		conn.onclose = function(event) {
+			console.log("Connection close!");
+		}
+
 
 		// Hàm tạo và tải tin nhắn xuống hiển thị từ server mysql và nằm trong ($(document).on('click', '.select_user', function() {..})
 		function make_chat_box(receiver_username, friend_user_id) {
@@ -215,14 +211,14 @@ $all_users = $chat_users->getAllUser();
 		$(document).on('click', '.select_user', function() {
 			receiver_user_id = $(this).data('user_id');
 
-            var receiver_usename = $('#list_user_name_' + receiver_user_id).text();
+			var receiver_usename = $('#list_user_name_' + receiver_user_id).text();
 
-            $('.select_user.active').removeClass('active');
-            $(this).addClass('active');
+			$('.select_user.active').removeClass('active');
+			$(this).addClass('active');
 
-            make_chat_box(receiver_usename, receiver_user_id);
+			make_chat_box(receiver_usename, receiver_user_id);
 
-            $('#is_active_chat').val('Yes');
+			$('#is_active_chat').val('Yes');
 
 			$.ajax({
 				url: "index.php?ctrl=ChatController&action=view_private_chat&request_name=fetch_chat",
@@ -279,7 +275,7 @@ $all_users = $chat_users->getAllUser();
 		//Hàm gửi tin nhắn phía client lên server ratchet
 		$(document).on('submit', '#chat_form', function(event) {
 			event.preventDefault();
-			
+
 			if ($('#chat_form').parsley().isValid()) {
 				var from_user_id = $('#login_user_id').val();
 				var message = $('#chat_message').val();
@@ -294,12 +290,12 @@ $all_users = $chat_users->getAllUser();
 			}
 		})
 
-		$(document).on('click', '#close_chat_area', function(){
-            $('#chat_area').html('');
-            $('.select_user.active').removeClass('active');
-            $('#is_active_chat').val('No');
+		$(document).on('click', '#close_chat_area', function() {
+			$('#chat_area').html('');
+			$('.select_user.active').removeClass('active');
+			$('#is_active_chat').val('No');
 
-            receiver_user_id = '';
-        });
-    })
+			receiver_user_id = '';
+		});
+	})
 </script>

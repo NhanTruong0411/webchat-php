@@ -1,5 +1,5 @@
 <?php
-
+    // echo('<script>alert("fuck")</script>');
     if($_SERVER['REQUEST_METHOD'] === "POST")
     {
         $email = strtolower($_POST['email']);

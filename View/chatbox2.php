@@ -1,114 +1,48 @@
-<?php 
+<?php
 
-   $user = $_SESSION['user'];
+$user = $_SESSION['user'];
 
-   $all_messages = $room->getAllMessage();
+$all_messages = $room->getAllMessage();
 
-   $all_users = $chat_users->getAllUser();
+$all_users = $chat_users->getAllUser();
 
 ?>
 
-<div class="container">
-   <br />
-   <h3 class="text-center">PHP Chat Application</h3>
-   <br />
-   <div class="row">
-      <!-- Chat box -->
-      <div class="col-lg-8">
-         <div class="card">
+<div class="container-fluid">
+   <div class="row h-100">
 
-            <div class="card-header">
-               <div class="row">
-                  <div class="col col-sm-6">
-                     <h3>Chat Room</h3>
-                  </div>
-                  <div class="col col-sm-6 text-right">
-                     <a href="index.php?ctrl=ChatController&action=view_private_chat" class="btn btn-success btn-sm">Private Chat</a>
-                  </div>
-               </div>
-            </div>
-
-            <div class="card-body" id="messages_area">
-               <?php
-                  foreach($all_messages as $message) 
-                  {
-                     if(strcmp($message['user_id'], $user['user_id']))
-                     {
-                        $from = 'Me';
-                        $row_class = 'row justify-content-start';
-                        $background_class = 'text-dark alert-light';
-                     }
-                     else 
-                     {
-                        $from = $message['username'];
-                        $row_class = 'row justify-content-end';
-                        $background_class = 'alert-success';
-                     }
-
-                     echo '
-                        <div class="'.$row_class.'">
-                           <div class="col-sm-10">
-                              <div class="shadow-sm alert '.$background_class.'">
-                                 <b>'.$from.'</b> '. $message['message'] . '
-                                 </br>
-                                 <div class="text-right">
-                                    <small>'.$message['create_at'].'</small>
-                                 </div>
-                              <div>
-                           </div>
-                        </div>
-                     ';
-                  }
-               ?>
-            </div>
-            
-            <form method="post" id="chat_form" data-parsley-errors-container="#validation_error">
-               <div class="input-group mb-3">
-                  <textarea class="form-control" id="chat_message" name="chat_message" placeholder="Type Message Here" data-parsley-maxlength="1000" data-parsley-pattern="/^[a-zA-Z0-9\s]+$/" required></textarea>
-                  <div class="input-group-append">
-                     <button type="submit" name="send" id="send" class="btn btn-primary"><i class="fa fa-paper-plane"></i></button>
-                  </div>
-               </div>
-               <div id="validation_error"></div>
-            </form>
-
+      <!-- Column 1 : Profile -->
+      <div class="col-md-1 col-sm-2 p-0 text-center">
+         <div class="card d-flex flex-column" style="height: 100vh !important; background-color: #F9AA33 !important;">
+            <img src="<?php echo $user['avatar'] ?>" alt="" width="100" class="img-fluid rounded-circle img-thumbnail mx-auto my-3" />
+            <a href="index.php?ctrl=UserController&action=view_profile" class="mt-2 mb-2 text-white">Edit</a>
+            <a href="index.php?ctrl=UserController&action=logout" class="mt-2 mb-2 text-white">Logout</a>
          </div>
       </div>
 
-      <!-- Profile -->
-      <div class="col-lg-4">
+      <!-- Column 2 : friend list -->
+      <div class="col-md-3 col-sm-4 p-0">
          <input type="hidden" name="user_id" id="user_id" value="<?php echo $user['user_id'] ?>">
-         <div class="mt-3 mb-3 text-center">
-            <img src="<?php echo $user['avatar'] ?>" alt="" width="150" class="img-fluid rounded-circle img-thumbnail" />
-            <h3><?php echo $user['username'] ?></h3>
-            <div>
-               <a href="index.php?ctrl=UserController&action=view_profile" class="btn btn-info mt-2 mb-2 text-white">Edit</a>
-               <a href="index.php?ctrl=UserController&action=logout" class="btn btn-danger mt-2 mb-2 text-white">Logout</a>
+         <div class="card" style="height: 100vh !important;">
+            <div class="card-header text-white" style="background-color: #344955;">
+               <h3 class="m-0 text-left text-white">User List</h3>
             </div>
-         </div>
-
-         <div class="card mt-3">
-            <div class="card-header">User List</div>
             <div class="card-body" id="user_list">
                <div class="list-group list-group-flush">
                   <?php
-                  if(count($all_users) > 0)
-                  {
-                     foreach($all_users as $k => $u)
-                     {
+                  if (count($all_users) > 0) {
+                     foreach ($all_users as $k => $u) {
                         $status = '<i class="fa fa-circle text-danger"></i>';
-                        if($u['login_status']) 
-                        {
+                        if ($u['login_status']) {
                            $status = '<i class="fa fa-circle text-success"></i>';
                         }
 
-                        if($u['_id'] != $user['user_id'])
-                        {
+                        if ($u['_id'] != $user['user_id']) {
                            echo '
                               <a class="list-group-item list-group-item-action">
-                                 <img src="'.$u['avatar'].'" class="img-fluid rounded-circle img-thumbnail" width="50" />
-                                 <span class="ml-1"><strong>'.$u['username'].'</strong></span>
-                                 <span class="mt-2 float-right">'.$status.'</span>
+                                 <img src="' . $u['avatar'] . '" class="img-fluid rounded-circle img-thumbnail" width="50" />
+                                 <span class="ml-1"><strong>' . $u['username'] . '</strong></span>
+                                 <span class="mt-2 float-right">' . $status . '</span>
                               </a>
                            ';
                         }
@@ -118,13 +52,72 @@
                </div>
             </div>
          </div>
-
       </div>
+
+      <!-- Column 3 : Chat box -->
+      <div class="col-md-8 col-sm-6 p-0">
+         <div class="card" style="height: 100vh !important;">
+
+            <div class="card-header text-white" style="background-color: #344955;">
+               <div class="row">
+                  <div class="col col-sm-6">
+                     <h3 class="m-0 text-left text-white">Chat Room</h3>
+                  </div>
+                  <div class="col col-sm-6 text-right">
+                     <a href="index.php?ctrl=ChatController&action=view_private_chat" class="btn btn-warning btn-sm">Private Chat</a>
+                  </div>
+               </div>
+            </div>
+
+            <div class="card-body" id="messages_area">
+               <?php
+               foreach ($all_messages as $message) {
+                  if (strcmp($message['user_id'], $user['user_id'])) {
+                     $from = 'Me';
+                     $row_class = 'row justify-content-start';
+                     $background_class = 'text-dark alert-light';
+                  } else {
+                     $from = $message['username'];
+                     $row_class = 'row justify-content-end';
+                     $background_class = 'alert-success';
+                  }
+
+                  echo '
+                        <div class="' . $row_class . '">
+                           <div class="col-sm-10">
+                              <div class="shadow-sm alert ' . $background_class . '">
+                                 <b>' . $from . '</b> ' . $message['message'] . '
+                                 </br>
+                                 <div class="text-right">
+                                    <small>' . $message['create_at'] . '</small>
+                                 </div>
+                              <div>
+                           </div>
+                        </div>
+                     ';
+               }
+               ?>
+            </div>
+
+            <form method="post" id="chat_form" data-parsley-errors-container="#validation_error">
+               <div id="validation_error"></div>
+               <div class="input-group">
+                  <textarea class="form-control" id="chat_message" name="chat_message" placeholder="Type Message Here" data-parsley-maxlength="1000" data-parsley-pattern="/^[a-zA-Z0-9\s]+$/" required></textarea>
+                  <div class="input-group-append">
+                     <button type="submit" name="send" id="send" class="btn btn-primary"><i class="fa fa-paper-plane"></i></button>
+                  </div>
+               </div>
+            </form>
+
+         </div>
+      </div>
+
+
+
    </div>
 </div>
 
 <script type="text/javascript">
-
    $(document).ready(function() {
 
       //connect to socket
@@ -134,15 +127,15 @@
       };
 
       conn.onmessage = function(e) {
-         
+
          var data = JSON.parse(e.data);
          console.log(e.data);
-         
+
          var row_class = '';
 
          var background_class = '';
 
-         if(data.from == 'Me') {
+         if (data.from == 'Me') {
             row_class = 'row justify-content-start';
             background_class = 'text-dark alert-light';
          } else {
@@ -184,7 +177,7 @@
          e.preventDefault();
 
          //check validate
-         if($('#chat_form').parsley().isValid()) {
+         if ($('#chat_form').parsley().isValid()) {
 
             var user_id = $('#user_id').val();
             var message = $('#chat_message').val();
@@ -201,7 +194,6 @@
          }
 
       })
-      
-   })
 
+   })
 </script>
