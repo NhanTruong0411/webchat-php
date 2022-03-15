@@ -67,7 +67,8 @@ class User
             'login_status' => false,
             'create_at' => $this->date->format('d-m-Y h:i:s'),
             'update_at' => $this->date->format('d-m-Y h:i:s'),
-            'avatar' => $this->generateAvatar(strtoupper($input['username'][0]))
+            'avatar' => $this->generateAvatar(strtoupper($input['username'][0])),
+            'is_admin' => false
         );
         $this->Users_Collection->insertOne($register_user);
         return true;
@@ -99,6 +100,10 @@ class User
             $transformed_users[] = $this->tranformUserDetail('without-password', $user);
         }
         return $transformed_users;
+    }
+
+    public function removeUser() {
+        $this->Users_Collection->deleteOne(['_id' => $this->mongo_id($_GET['id'])]);
     }
 
     /**

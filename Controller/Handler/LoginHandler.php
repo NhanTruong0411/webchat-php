@@ -2,6 +2,7 @@
     // echo('<script>alert("fuck")</script>');
     if($_SERVER['REQUEST_METHOD'] === "POST")
     {
+        // echo '<script>alert("fuck")</script>';
         $email = strtolower($_POST['email']);
         $hashed_password = md5($_POST['password']);
 
@@ -27,14 +28,15 @@
                 'user_id' => $result['_id'],
                 'avatar' => $result['avatar'],
                 'username' => $result['username'],
+                'is_admin' => $result['is_admin'],
                 'token' => $token
             ];
             echo "<meta http-equiv='refresh' content='0; url=index.php?ctrl=ChatController&action=view_chatbox' />";
         } 
-        else 
+        else
         {
             echo "<meta http-equiv='refresh' content='0; url=index.php?ctrl=UserController&action=view_login' />";
-            echo "<script>alert('User not found!! \n Please check your email and password!!')</script>";
+            echo "<script>alert('User not found!! Please check your email and password!!')</script>";
         }
     }
 
