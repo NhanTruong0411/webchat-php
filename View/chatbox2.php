@@ -6,6 +6,7 @@ $all_messages = $room->getAllMessage();
 
 $all_users = $chat_users->getAllUser();
 
+
 ?>
 
 <div class="container-fluid">
@@ -27,6 +28,11 @@ $all_users = $chat_users->getAllUser();
             ?>
             <a href="index.php?ctrl=UserController&action=view_profile" class="mt-2 mb-2 text-white">Edit</a>
             <a href="index.php?ctrl=ChatController&action=view_private_chat" class="mt-2 mb-2 text-white">Private Chat</a>
+            <?php
+               if(!$user['is_admin']) {
+                  echo '<a href="index.php?ctrl=UserController&action=view_contact" class="mt-2 mb-2 text-white">Contact us</a>';
+               }
+            ?>
             <a href="index.php?ctrl=UserController&action=logout" class="mt-2 mb-2 text-white">Log out</a>
          </div>
       </div>

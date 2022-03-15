@@ -34,6 +34,15 @@
         case 'handle_edit_profile':
             include 'Controller/Handler/EditProfileHandler.php';
             break;
+        case 'view_contact':
+            include 'View/contact.php';
+            break;
+        case 'handle_contact':
+            include 'Controller/Handler/ContactHandler.php';
+            break;
+        case 'view_forget_password':
+            include 'View/forgetpassword.php';
+            break;
     }
 
 ?>
