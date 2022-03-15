@@ -39,7 +39,7 @@ $all_users = $chat_users->getAllUser();
 
                         if ($u['_id'] != $user['user_id']) {
                            echo '
-                              <a class="list-group-item list-group-item-action">
+                              <a class="list-group-item list-group-item-action" id="userid_'.$u['_id'].'">
                                  <img src="' . $u['avatar'] . '" class="img-fluid rounded-circle img-thumbnail" width="50" />
                                  <span class="ml-1"><strong>' . $u['username'] . '</strong></span>
                                  <span class="mt-2 float-right">' . $status . '</span>
@@ -167,6 +167,11 @@ $all_users = $chat_users->getAllUser();
 
       //initialize parsley validation library
       $('#chat_form').parsley();
+
+      //join room
+      $('[id^=userid_]').on('click', function() {
+         console.log('hadasd')
+      })
 
       // $('#messages_area').scrollTop($('#messages_area')[0].scrollHeight);
 
