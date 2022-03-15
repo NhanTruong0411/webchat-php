@@ -17,15 +17,17 @@ $all_users = $chat_users->getAllUser();
             <img src="<?php echo $user['avatar'] ?>" alt="" width="100" class="img-fluid rounded-circle img-thumbnail mx-auto my-3" />
             <?php
                if($user['is_admin'] == "false") {
-                  echo '<a href="index.php?ctrl=UserController&action=view_profile" class="mt-2 mb-2 text-white">Edit</a>';
+                  echo '';
                }
             ?>
-            <a href="index.php?ctrl=UserController&action=logout" class="mt-2 mb-2 text-white">Logout</a>
             <?php
                if($user['is_admin'] == "true") {
                   echo '<a href="index.php?ctrl=AdminController&action=view_dashboard" class="mt-2 mb-2 text-white">Dashboard</a>';
                }
             ?>
+            <a href="index.php?ctrl=UserController&action=view_profile" class="mt-2 mb-2 text-white">Edit</a>
+            <a href="index.php?ctrl=ChatController&action=view_private_chat" class="mt-2 mb-2 text-white">Private Chat</a>
+            <a href="index.php?ctrl=UserController&action=logout" class="mt-2 mb-2 text-white">Log out</a>
          </div>
       </div>
 
@@ -70,10 +72,7 @@ $all_users = $chat_users->getAllUser();
             <div class="card-header text-white" style="background-color: #344955;">
                <div class="row">
                   <div class="col col-sm-6">
-                     <h3 class="m-0 text-left text-white">Chat Room</h3>
-                  </div>
-                  <div class="col col-sm-6 text-right">
-                     <a href="index.php?ctrl=ChatController&action=view_private_chat" class="btn btn-warning btn-sm text-dark">Private Chat</a>
+                     <h3 class="m-0 text-left text-white">Group Chat Room</h3>
                   </div>
                </div>
             </div>
