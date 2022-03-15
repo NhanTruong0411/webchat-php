@@ -120,7 +120,7 @@ class User
                 'user_id' => $user_detail['_id'],
                 'username' => $user_detail['username'],
                 'avatar' => $user_detail['avatar'],
-                'connection_id' => $user_detail['connection_id']
+                'connection_id' => $user_detail['connection_id']??""
             );
     
             return $new_user_detail;

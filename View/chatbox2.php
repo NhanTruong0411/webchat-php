@@ -177,11 +177,6 @@ $all_users = $chat_users->getAllUser();
       //initialize parsley validation library
       $('#chat_form').parsley();
 
-      //join room
-      $('[id^=userid_]').on('click', function() {
-         console.log('hadasd')
-      })
-
       // $('#messages_area').scrollTop($('#messages_area')[0].scrollHeight);
 
       //chat form submit

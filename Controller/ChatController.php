@@ -14,7 +14,7 @@ switch ($action) {
         include 'View/chatbox2.php';
         break;
     case 'view_private_chat':
-        include 'View/privateChat.php';
+        include 'View/privateChat2.php';
         if(isset($_GET['request_name'])) {
             $result = $private_chat->getAllPrivateChat($_POST['receiver_user_id'], $_POST['from_user_id']);
             var_dump($result);
