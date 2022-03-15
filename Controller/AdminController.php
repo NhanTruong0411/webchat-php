@@ -16,7 +16,9 @@
       case 'view_dashboard':
          include 'View/admin/dashboard.php';
          break;
-
+      case 'remove_user':
+         include 'Controller/Handler/RemoveUser.php';
+         break;
    }
 
 ?>
