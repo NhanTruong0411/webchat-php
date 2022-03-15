@@ -39,5 +39,3 @@
             echo "<script>alert('User not found!! Please check your email and password!!')</script>";
         }
     }
-
-?>

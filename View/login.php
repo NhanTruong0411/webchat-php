@@ -34,11 +34,11 @@
 
 						<div class="form-group d-md-flex">
 							<div class="w-100 text-md-right">
-								<a href="#">Forgot Password</a>
+								<a href="index.php?ctrl=UserController&action=view_forget_password">Forgot Password</a>
 							</div>
 						</div>
 						<div class="form-group">
-							<button type="submit" class="btn form-control btn-yellow rounded submit px-3 mt-4 text-dark">Get Started</button>
+							<input type="submit" class="btn form-control btn-yellow rounded submit px-3 mt-4 text-dark">Get Started</input>
 						</div>
 					</form>
 					<div class="w-100 text-center mt-4 text">
