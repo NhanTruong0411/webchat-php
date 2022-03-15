@@ -18,14 +18,30 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
    }
 
    if (!empty($_FILES["avatar_name"]["name"])) {
+      
+      #region Prepare file name
       $target_dir = "images/";
-      $target_file = $target_dir . basename($_FILES["avatar_name"]["name"]);
-      $uploadOk = 1;
-      $file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-      $update['avatar'] = $target_file;
-      $user_session['avatar'] = $target_file;
+      $file = $_FILES["avatar_name"]["name"];
+      $path = pathinfo($file);
+      $filename = $path['filename'];
+      $ext = $path['extension'];
+      $temp_name = $_FILES['avatar_name']['tmp_name'];
+      $path_filename_ext = $target_dir.$user_session['user_id']."_".$filename.".".$ext;
+      $update['avatar'] = $path_filename_ext;
+      $old_user_avatar = $user_session['avatar'];
+      $user_session['avatar'] = $path_filename_ext;
+      #endregion
+
+      #region Check exist then remove old file and save new one
+      if(file_exists($path_filename_ext)) {
+         echo "File already exists!";
+      } else {
+         unlink(realpath(dirname(__DIR__,2))."/".$old_user_avatar);
+         move_uploaded_file($temp_name, $path_filename_ext);
+      }
+      #endregion
    }
 
    $user->update($user_session['user_id'], $update);
-   echo "<meta http-equiv='refresh' content='0; url=index.php?ctrl=UserController&action=view_profile' />";
+   echo "<meta http-equiv='refresh' content='0; url=index.php?ctrl=UserController&action=logout' />";
 }
