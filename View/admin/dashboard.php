@@ -39,8 +39,7 @@ $i = 0;
                      if (empty($set['is_admin'])) {
                         $set['is_admin'] = 'false';
                      }
-                     if ($set['is_admin'] === 'false') 
-                     {
+                     if ($set['is_admin'] === 'false') {
                   ?>
                         <tr>
                            <th scope="row"><?php echo $i ?></th>
@@ -55,6 +54,11 @@ $i = 0;
                   } ?>
                </tbody>
             </table>
+         </div>
+         <div class="text-center">
+            <form action="index.php?ctrl=AdminController&action=export_to_excel" method="POST">
+               <button type="submit" class="btn btn-md btn-success text-center" name="export_excel">Export to excel</button>
+            </form>
          </div>
       </div>
    </div>

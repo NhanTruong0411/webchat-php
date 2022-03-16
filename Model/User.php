@@ -160,6 +160,8 @@ class User
         return $path;
     }
 
+    
+
     private function mongo_id(string $id) {
         return new MongoDB\BSON\ObjectId($id);
     }

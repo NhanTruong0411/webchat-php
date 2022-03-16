@@ -45,7 +45,7 @@
 
                   <div class="form-group d-md-flex">
                      <div class="w-100 text-md-right">
-                        <a href="#">Forgot Password</a>
+                        <a href="index.php?ctrl=UserController&action=view_forget_password">Forgot Password</a>
                      </div>
                   </div>
                   <div class="form-group">

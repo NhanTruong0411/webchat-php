@@ -19,6 +19,9 @@
       case 'remove_user':
          include 'Controller/Handler/RemoveUser.php';
          break;
+      case 'export_to_excel':
+         include 'Controller/Admin_handler/ExportToExcel.php';
+         break;
    }
 
 ?>
