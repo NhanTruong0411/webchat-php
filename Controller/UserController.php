@@ -43,6 +43,15 @@
         case 'view_forget_password':
             include 'View/forgetpassword.php';
             break;
+        case 'handle_forget_password':
+            include 'Controller/Handler/ForgetPasswordHandler.php';
+            break;
+        case 'view_reset_password':
+            include 'View/resetpassword.php';
+            break;
+        case 'handle_reset_password':
+            include 'Controller/Handler/ResetPasswordHandler.php';
+            break;
     }
 
 ?>
