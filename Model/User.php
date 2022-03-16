@@ -39,6 +39,7 @@ class User
             $result = $this->Users_Collection->findOne($filter);
             return $result;
         }
+
     }
 
     /**
@@ -86,6 +87,13 @@ class User
         // var_dump($set);
         $this->Users_Collection->findOneAndUpdate(
             ['_id' =>  $this->mongo_id($user_id)],
+            ['$set' => $set]
+        );
+    }
+
+    public function resetPassword(string $user_reset_email, array $set) {
+        $this->Users_Collection->findOneAndUpdate(
+            ['email' => $user_reset_email],
             ['$set' => $set]
         );
     }

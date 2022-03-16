@@ -39,9 +39,9 @@ $i = 0;
                      if (empty($set['is_admin'])) {
                         $set['is_admin'] = 'false';
                      }
-                     if ($set['is_admin'] == 'false') {
+                     if ($set['is_admin'] === 'false') 
+                     {
                   ?>
-
                         <tr>
                            <th scope="row"><?php echo $i ?></th>
                            <td><?php echo $set['username'] ?></td>

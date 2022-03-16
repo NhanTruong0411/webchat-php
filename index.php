@@ -3,6 +3,10 @@ require_once('Model/MongoConnection.php');
 require_once('Model/User.php');
 require_once('Model/Room.php');
 require_once('Model/PrivateChat.php');
+require_once('Model/mailer/PHPMailer.php');
+require_once('Model/mailer/Exception.php');
+require_once('Model/mailer/SMTP.php');
+
 session_start();
 ?>
 
