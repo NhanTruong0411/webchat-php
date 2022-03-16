@@ -17,21 +17,23 @@
 
         if(!empty($result)) 
         {
-            $token = md5(uniqid());
-            $update_user = array(
-                'login_status' => true,
-                'token' => $token
-            ); 
-            $user->update($result['_id'], $update_user);
+            if($result->enable) {
+                $token = md5(uniqid());
+                $update_user = array(
+                    'login_status' => true,
+                    'token' => $token
+                ); 
+                $user->update($result['_id'], $update_user);
 
-            $_SESSION['user'] = [
-                'user_id' => $result['_id'],
-                'avatar' => $result['avatar'],
-                'username' => $result['username'],
-                'is_admin' => $result['is_admin'],
-                'token' => $token
-            ];
-            echo "<meta http-equiv='refresh' content='0; url=index.php?ctrl=ChatController&action=view_chatbox' />";
+                $_SESSION['user'] = [
+                    'user_id' => $result['_id'],
+                    'avatar' => $result['avatar'],
+                    'username' => $result['username'],
+                    'is_admin' => $result['is_admin'],
+                    'token' => $token
+                ];
+                echo "<meta http-equiv='refresh' content='0; url=index.php?ctrl=ChatController&action=view_chatbox' />";
+            }
         } 
         else
         {

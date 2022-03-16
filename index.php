@@ -6,6 +6,11 @@ require_once('Model/PrivateChat.php');
 require_once('Model/mailer/PHPMailer.php');
 require_once('Model/mailer/Exception.php');
 require_once('Model/mailer/SMTP.php');
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\SMTP;
+// use PHPMailer\PHPMailer\Exception;
+
+// require 'vendor/autoload.php';
 
 session_start();
 ?>

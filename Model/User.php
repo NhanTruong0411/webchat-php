@@ -69,10 +69,12 @@ class User
             'create_at' => $this->date->format('d-m-Y h:i:s'),
             'update_at' => $this->date->format('d-m-Y h:i:s'),
             'avatar' => $this->generateAvatar(strtoupper($input['username'][0])),
+            'verify_code' => $this->setUserVerificationCode(),
+            'enable' => false,
             'is_admin' => false
         );
-        $this->Users_Collection->insertOne($register_user);
-        return true;
+        $result = $this->Users_Collection->insertOne($register_user);
+        return $result->getInsertedId();
     }
 
     /**
@@ -138,6 +140,27 @@ class User
         {
             unset($user_detail['password']);
             return $user_detail;
+        }
+    }
+
+    public function setUserVerificationCode() {
+        return md5(uniqid());
+    }
+
+    public function getUserVerificationCode(string $userid) {
+        $result = $this->Users_Collection->findOne(['_id' => $this->mongo_id($userid)]);
+        return $result->verify_code;
+    }
+
+    public function isVerifyEmailCode(string $code) {
+        $users = $this->Users_Collection->find([
+            'verify_code' => $code
+        ])->toArray();
+        
+        if(count($users) > 0) {
+            return $users;
+        } else {
+            return false;
         }
     }
 

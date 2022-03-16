@@ -25,6 +25,9 @@
         case 'handle_register':
             include 'Controller/Handler/RegisterHandler.php';
             break;
+        case 'verify':
+            include 'Controller/Handler/Verify.php';
+            break;
         case 'logout':
             include 'Controller/Handler/LogoutHandle.php';
             break;
